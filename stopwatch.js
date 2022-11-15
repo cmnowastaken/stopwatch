@@ -1,6 +1,7 @@
 let centiseconds = "00";
 let seconds = "00";
 let minutes = "00";
+let IntervalID;
 
 function startTime() {
   centiseconds++;
@@ -27,17 +28,17 @@ function startTime() {
 }
 
 function resetTime() {
-  document.getElementById("centiseconds").innerHTML = centiseconds;
-  document.getElementById("seconds").innerHTML = seconds;
-  document.getElementById("minutes").innerHTML = minutes;
   centiseconds = "00";
   seconds = "00";
   minutes = "00";
+  document.getElementById("centiseconds").innerHTML = centiseconds;
+  document.getElementById("seconds").innerHTML = seconds;
+  document.getElementById("minutes").innerHTML = minutes;
 }
 
 document.getElementById("start").onclick = function () {
+  clearInterval(IntervalID);
   IntervalID = setInterval(startTime, 10);
-  console.log("click?");
 };
 
 document.getElementById("pause").onclick = function () {
@@ -45,6 +46,6 @@ document.getElementById("pause").onclick = function () {
 };
 
 document.getElementById("reset").onclick = function () {
-  resetTime();
   clearInterval(IntervalID);
+  resetTime();
 };
